@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1040987320116",
+    "project_id": "efire-f0d23",
+    "storage_bucket": "efire-f0d23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1040987320116:android:86f22c3532879da7367f61",
+        "android_client_info": {
+          "package_name": "com.example.efirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1040987320116-rgg1372euagjbdfr0cno33vta9uj40l7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJVKZug8-yp8rn85istmOfqMTeN0yVBlI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1040987320116-rgg1372euagjbdfr0cno33vta9uj40l7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
