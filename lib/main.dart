@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '/config/theme.dart';
-import '/config/app_router.dart';
 import '/blocs/blocs.dart';
 import '/repositories/repositories.dart';
 import '/screens/screens.dart';
@@ -83,8 +82,22 @@ class MyApp extends StatelessWidget {
             title: 'Ecommerce',
             debugShowCheckedModeBanner: false,
             theme: theme(),
-            onGenerateRoute: AppRouter.onGenerateRoute,
-            initialRoute: SplashScreen.routeName,
+            // onGenerateRoute: AppRouter.onGenerateRoute,
+            initialRoute: '/',
+            routes: {
+              '/': (context) => HomeScreen(),
+              '/splash': (context) => SplashScreen(),
+              '/cart': (context) => CartScreen(),
+              CatalogScreen.routeName: (context) => CatalogScreen(
+                  ModalRoute.of(context)!.settings.arguments as Category),
+              '/wishlist': (context) => WishlistScreen(),
+              '/checkout': (context) => CheckoutScreen(),
+              '/payment-selection': (context) => PaymentSelection(),
+              //'/home': (context) => HomeScreen(),
+              '/order-confirmation': (context) => OrderConfirmation(),
+              '/product': (context) => ProductScreen(
+                  ModalRoute.of(context)!.settings.arguments as Product),
+            },
           ),
         ),
       ),

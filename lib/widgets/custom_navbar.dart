@@ -28,8 +28,10 @@ class CustomNavBar extends StatelessWidget {
             : (screen == '/cart')
                 ? const GoToCheckoutNavBar()
                 : (screen == '/checkout')
-                    ? const OrderNowNavBar()
-                    : const HomeNavBar(),
+                    ? const GoToConfirmOrder()
+                    : (screen == '/order-confirmation')
+                        ? const BackToHomePage()
+                        : const HomeNavBar(),
       ),
     );
   }
@@ -167,6 +169,79 @@ class GoToCheckoutNavBar extends StatelessWidget {
   }
 }
 
+class GoToConfirmOrder extends StatelessWidget {
+  const GoToConfirmOrder({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        BlocBuilder<CheckoutBloc, CheckoutState>(builder: (context, state) {
+          if (state is CheckoutLoading) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          ;
+          if (state is CheckoutLoaded) {
+            return ElevatedButton(
+              onPressed: () {
+                context
+                    .read<CheckoutBloc>()
+                    .add(ConfirmCheckout(checkout: state.checkout));
+                Navigator.pushNamed(context, '/order-confirmation');
+              },
+              style: ElevatedButton.styleFrom(
+                primary: Colors.white,
+                shape: const RoundedRectangleBorder(),
+              ),
+              child: Text(
+                'ORDER CONFIRM',
+                style: Theme.of(context).textTheme.headline3,
+              ),
+            );
+          } else {
+            return Text('Something went wrong');
+          }
+        }),
+      ],
+    );
+  }
+}
+
+class BackToHomePage extends StatelessWidget {
+  const BackToHomePage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        ElevatedButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/');
+          },
+          style: ElevatedButton.styleFrom(
+            primary: Colors.white,
+            shape: const RoundedRectangleBorder(),
+          ),
+          child: Text(
+            'BACK TO HOMEPAGE',
+            style: Theme.of(context).textTheme.headline3,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class OrderNowNavBar extends StatelessWidget {
   const OrderNowNavBar({
     Key? key,
@@ -206,13 +281,14 @@ class OrderNowNavBar extends StatelessWidget {
                   total: state.total!,
                 );
               }
-              if (Platform.isIOS &&
-                  state.paymentMethod == PaymentMethod.apple_pay) {
-                return ApplePay(
-                  products: state.products!,
-                  total: state.total!,
-                );
-              } else {
+              // if (Platform.isIOS &&
+              //     state.paymentMethod == PaymentMethod.apple_pay) {
+              //   return ApplePay(
+              //     products: state.products!,
+              //     total: state.total!,
+              //   );
+              // }
+              else {
                 return ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/payment-selection');

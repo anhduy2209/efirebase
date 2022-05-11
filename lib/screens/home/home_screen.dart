@@ -1,21 +1,50 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '/blocs/blocs.dart';
 import '/widgets/widgets.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   static const String routeName = '/';
 
-  static Route route() {
-    return MaterialPageRoute(
-      settings: RouteSettings(name: routeName),
-      builder: (_) => HomeScreen(),
-    );
-  }
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
 
+class _HomeScreenState extends State<HomeScreen> {
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  // static Route route() {
   @override
   Widget build(BuildContext context) {
+    // final TextEditingController _test = TextEditingController();
+
+    // return Scaffold(
+    //   body: Container(
+    //     child: Form(
+    //       key: _formKey,
+    //       child: Padding(
+    //         padding: EdgeInsets.all(20),
+    //         child: TextFormField(
+    //           controller: _test,
+    //           decoration: const InputDecoration(hintText: 'Test'),
+    //         ),
+    //       ),
+    //     ),
+    //   ),
+    // );
+
+    // return Scaffold(
+    //     body: Center(
+    //   child: ElevatedButton(
+    //     onPressed: () {
+    //       Navigator.pushNamed(context, '/checkout');
+    //     },
+    //     child: const Text('La'),
+    //   ),
+    // ));
+
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
@@ -24,7 +53,7 @@ class HomeScreen extends StatelessWidget {
           title: 'Ecommerce',
           automaticallyImplyLeading: false,
         ),
-        bottomNavigationBar: CustomNavBar(screen: routeName),
+        bottomNavigationBar: CustomNavBar(screen: HomeScreen.routeName),
         body: Column(
           children: [
             BlocBuilder<CategoryBloc, CategoryState>(

@@ -6,23 +6,24 @@ import '/widgets/widgets.dart';
 class ProductScreen extends StatelessWidget {
   static const String routeName = '/product';
 
-  static Route route({required Product product}) {
-    return MaterialPageRoute(
-      settings: RouteSettings(name: routeName),
-      builder: (context) => ProductScreen(product: product),
-    );
-  }
+  // static Route route({required Product product}) {
+  //   return MaterialPageRoute(
+  //     settings: RouteSettings(name: routeName),
+  //     builder: (context) => ProductScreen(product: product),
+  //   );
+  // }
 
   final Product product;
+  ProductScreen(this.product);
 
-  const ProductScreen({
-    required this.product,
-  });
+  // const ProductScreen({
+  //   required this.product,
+  // });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       appBar: CustomAppBar(title: product.name),
       bottomNavigationBar: CustomNavBar(
         screen: routeName,

@@ -4,16 +4,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../blocs/blocs.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   static const String routeName = '/splash';
 
-  static Route route() {
-    return MaterialPageRoute(
-      settings: const RouteSettings(name: routeName),
-      builder: (context) => SplashScreen(),
-    );
-  }
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
 
+class _SplashScreenState extends State<SplashScreen> {
+  // static Route route() {
   @override
   Widget build(BuildContext context) {
     Timer(

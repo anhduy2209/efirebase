@@ -1,8 +1,8 @@
 {
     "provider": "apple_pay",
     "data": {
-        "merchantIdentifier": "merchant.com.maxonflutter.ecommerce",
-        "displayName": "Max on Flutter",
+        "merchantIdentifier": "merchant.com.duyna.ecommerce",
+        "displayName": "Anh Duy",
         "merchantCapabilities": [
             "3DS",
             "debit",

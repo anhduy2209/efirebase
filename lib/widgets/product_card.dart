@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, curly_braces_in_flow_control_structures
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -294,6 +296,7 @@ class ProductActions extends StatelessWidget {
             ),
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
+                // ignore: prefer_const_constructors
                 SnackBar(
                   content: Text('Removed from your Wishlist!'),
                 ),

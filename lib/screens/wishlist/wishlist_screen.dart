@@ -6,12 +6,12 @@ import '/widgets/widgets.dart';
 class WishlistScreen extends StatelessWidget {
   static const String routeName = '/wishlist';
 
-  static Route route() {
-    return MaterialPageRoute(
-      settings: RouteSettings(name: routeName),
-      builder: (context) => WishlistScreen(),
-    );
-  }
+  // static Route route() {
+  //   return MaterialPageRoute(
+  //     settings: RouteSettings(name: routeName),
+  //     builder: (context) => WishlistScreen(),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {

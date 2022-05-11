@@ -20,7 +20,7 @@ class UserRepository extends BaseUserRepository {
 
   @override
   Stream<User> getUser(String userId) {
-    print('Getting user data from Cloud Firestore');
+    print('Get user data - firebase');
     return _firebaseFirestore
         .collection('users')
         .doc(userId)
@@ -35,7 +35,7 @@ class UserRepository extends BaseUserRepository {
         .doc(user.id)
         .update(user.toDocument())
         .then(
-          (value) => print('User document updated.'),
+          (value) => print('User updated.'),
         );
   }
 }
